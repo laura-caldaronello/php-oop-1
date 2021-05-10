@@ -45,7 +45,15 @@
 
         $film5 = new Movie('an education'); // si possono creare anche oggetti uguali
 
-        foreach(array($film1,$film2,$film3,$film4,$film5) as $film) {
+        // non so in quale altro modo (dinamico) posso andare a raccogliere tutto ciò che ho definito con un determinato criterio
+        $filmArray = [];
+        $i = 1;
+        while (isset(${'film'.$i})) {
+            $filmArray[] = ${'film'.$i};
+            $i = $i + 1;
+        }
+
+        foreach($filmArray as $film) {
             foreach($film as $property => $value) {
                 if ($film->$property != null) {
                     if ($property == 'name') {
