@@ -32,9 +32,44 @@
         }
 
         $film1 = new Movie('il silenzio degli innocenti');
-        $film1->calcAge(1987);
-        
-        var_dump($film1);
+        $film1->calcAge(1991);
+
+        $film2 = new Movie('an education');
+
+        $film3 = new Movie('pulp fiction');
+        $film3->author = 'quentin tarantino';
+
+        $film4 = new Movie('the village');
+        $film4->author = 'm. night shyamalan';
+        $film4->calcAge(2004);
+
+        $film5 = new Movie('an education'); // si possono creare anche oggetti uguali
+
+        foreach(array($film1,$film2,$film3,$film4,$film5) as $film) {
+            foreach($film as $property => $value) {
+                if ($film->$property != null) {
+                    if ($property == 'name') {
+
+    ?>
+        <h2><?php echo $property . ": " . $film->$property ?></h2>
+    <?php
+                        
+                    }
+                    else {
+
+    ?>
+        <h3><?php echo $property . ": " . $film->$property ?></h3>
+    <?php
+
+                    }
+                }
+            }
+
+    ?>
+        <br>
+    <?php
+                
+        }
 
     ?>
 
